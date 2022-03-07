@@ -10,6 +10,7 @@ description="Starts dockerd for Rancher Desktop"
 
 supervisor=supervise-daemon
 command="'${WSL_HELPER_BINARY:-/usr/local/bin/wsl-helper}'"
+# command_args="docker-proxy start --configfile /etc/docker/rd-daemon.json"
 command_args="docker-proxy start"
 
 DOCKER_LOGFILE="${DOCKER_LOGFILE:-${LOG_DIR:-/var/log}/${RC_SVCNAME}.log}"

@@ -59,6 +59,7 @@ You can now clone the repository and run `npm install`.
 #### Manual Development Environment Setup
 
 1. Install [Windows Subsystem for Linux (WSL)] on your machine. Skip this step, if WSL is already installed.
+1.1. Make sure that you have go compiler 1.18 (rc1 or up)
 2. Open a PowerShell prompt (hit Windows Key + `X` and open `Windows PowerShell`).
 3. Install [Scoop] via `iwr -useb get.scoop.sh | iex`.
 4. Install git, go, nvm, and unzip via `scoop install git go nvm python unzip`.

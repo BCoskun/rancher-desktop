@@ -81,7 +81,7 @@ func GetDefaultProxyEndpoint() (string, error) {
 // passed to dockerd as-is.
 //
 // This function returns after dockerd has exited.
-func Start(port uint32, dockerSocket string, args []string) error {
+func Start(port uint32, dockerSocket string, configfile string, args []string) error {
 	dockerd, err := exec.LookPath("dockerd")
 	if err != nil {
 		return fmt.Errorf("could not find dockerd: %w", err)
@@ -96,8 +96,13 @@ func Start(port uint32, dockerSocket string, args []string) error {
 		return fmt.Errorf("could not set up docker socket: %w", err)
 	}
 
-	args = append(args, fmt.Sprintf("--host=unix://%s", dockerSocket))
-	args = append(args, "--host=unix:///var/run/docker.sock")
+	if configfile == "" {
+		args = append(args, fmt.Sprintf("--host=unix://%s", dockerSocket))
+		args = append(args, "--host=unix:///var/run/docker.sock")
+	} else {
+		args = append(args, fmt.Sprintf("--config-file=%s", configfile))
+	}
+
 	cmd := exec.Command(dockerd, args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr

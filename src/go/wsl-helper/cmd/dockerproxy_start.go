@@ -36,7 +36,8 @@ var dockerproxyStartCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		port := dockerproxyStartViper.GetUint32("port")
 		endpoint := dockerproxyStartViper.GetString("endpoint")
-		return dockerproxy.Start(port, endpoint, args)
+		cfgName := dockerproxyStartViper.GetString("configfile")
+		return dockerproxy.Start(port, endpoint, cfgName, args)
 	},
 }
 
@@ -47,6 +48,7 @@ func init() {
 	}
 	dockerproxyStartCmd.Flags().Uint32("port", dockerproxy.DefaultPort, "Vsock port to listen on")
 	dockerproxyStartCmd.Flags().String("endpoint", defaultProxyEndpoint, "Dockerd socket endpoint")
+	dockerproxyStartCmd.Flags().String("configfile", "", "Deamon Config file")
 	dockerproxyStartViper.AutomaticEnv()
 	dockerproxyStartViper.BindPFlags(dockerproxyStartCmd.Flags())
 	dockerproxyCmd.AddCommand(dockerproxyStartCmd)
