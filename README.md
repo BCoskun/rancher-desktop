@@ -59,13 +59,13 @@ You can now clone the repository and run `npm install`.
 #### Manual Development Environment Setup
 
 1. Install [Windows Subsystem for Linux (WSL)] on your machine. Skip this step, if WSL is already installed.
-1.1. Make sure that you have go compiler 1.18 (rc1 or up)
-2. Open a PowerShell prompt (hit Windows Key + `X` and open `Windows PowerShell`).
-3. Install [Scoop] via `iwr -useb get.scoop.sh | iex`.
-4. Install git, go, nvm, and unzip via `scoop install git go nvm python unzip`.
+2. Make sure that you have `go` compiler 1.18 (rc1 or up)
+3. Open a PowerShell prompt (hit Windows Key + `X` and open `Windows PowerShell`).
+4. Install [Scoop] via `iwr -useb get.scoop.sh | iex`.
+5. Install git, go, nvm, and unzip via `scoop install git go nvm python unzip`.
    Check node version with `nvm list`. If node v16 is not installed or set as the current version, then install using `nvm install 16` and set as current using `nvm use 16.xx.xx`.
-5. Install Visual Studio 2017 or higher. Make sure you have the `Windows SDK` component installed. This [Visual Studio docs] describes steps to install components.
-6. Ensure `msbuild_path` and `msvs_version` are configured correctly in `.npmrc` file. Run the following commands to set these properties:
+6. Install Visual Studio 2017 or higher. Make sure you have the `Windows SDK` component installed. This [Visual Studio docs] describes steps to install components.
+7. Ensure `msbuild_path` and `msvs_version` are configured correctly in `.npmrc` file. Run the following commands to set these properties:
 
    ```
    npm config set msvs_version <visual-studio-version-number>
